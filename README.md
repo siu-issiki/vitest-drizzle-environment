@@ -61,25 +61,25 @@ import { describe, test, expect } from 'vitest';
 import { users } from './schema';
 
 test('can create a user', async () => {
-  // vitestDrizzle.client is the transaction client
-  await vitestDrizzle.client.insert(users).values({
+  // vDrizzle.client is the transaction client
+  await vDrizzle.client.insert(users).values({
     name: 'Test User',
     email: 'test@example.com',
   });
 
-  const result = await vitestDrizzle.client.select().from(users);
+  const result = await vDrizzle.client.select().from(users);
   expect(result).toHaveLength(1);
 }); // ← Automatically rolled back at test end
 
 test('previous test data does not exist', async () => {
-  const result = await vitestDrizzle.client.select().from(users);
+  const result = await vDrizzle.client.select().from(users);
   expect(result).toHaveLength(0); // Rolled back!
 });
 ```
 
 ## Integration with Business Logic
 
-Instead of using `vitestDrizzle.client` directly in test files, we recommend abstracting the DB client in your business logic and mocking it in tests.
+Instead of using `vDrizzle.client` directly in test files, we recommend abstracting the DB client in your business logic and mocking it in tests.
 
 ### 1. Create a Client Module
 
@@ -118,9 +118,9 @@ export async function getAllUsers() {
 // users.test.ts
 import { describe, test, expect, vi } from 'vitest';
 
-// Mock client.ts to return vitestDrizzle.client
+// Mock client.ts to return vDrizzle.client
 vi.mock('./client', () => ({
-  getClient: () => vitestDrizzle.client,
+  getClient: () => vDrizzle.client,
 }));
 
 import { createUser, getAllUsers } from './users';
@@ -167,7 +167,7 @@ setupDrizzleEnvironment({
 
 ## Type Safety
 
-When using TypeScript, you can enable type inference for `vitestDrizzle.client` by adding a global type definition.
+When using TypeScript, you can enable type inference for `vDrizzle.client` by adding a global type definition.
 
 ```typescript
 // env.d.ts
@@ -177,7 +177,7 @@ import type { VitestDrizzleContext } from '@siu-issiki/vitest-drizzle-pg';
 type DrizzleTransaction = Parameters<Parameters<typeof db.transaction>[0]>[0];
 
 declare global {
-  var vitestDrizzle: VitestDrizzleContext<DrizzleTransaction>;
+  var vDrizzle: VitestDrizzleContext<DrizzleTransaction>;
 }
 
 export {};

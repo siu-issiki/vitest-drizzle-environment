@@ -2,7 +2,7 @@
  * Example business logic using Drizzle
  *
  * DB client is obtained from client.ts
- * During tests, client.ts is mocked to use vitestDrizzle.client
+ * During tests, client.ts is mocked to use vDrizzle.client
  */
 
 import { eq } from 'drizzle-orm';

@@ -22,8 +22,8 @@
  * ```ts
  * // Test file
  * test("creates a user", async () => {
- *   await vitestDrizzle.client.insert(users).values({ name: "test" });
- *   const result = await vitestDrizzle.client.select().from(users);
+ *   await vDrizzle.client.insert(users).values({ name: "test" });
+ *   const result = await vDrizzle.client.select().from(users);
  *   expect(result).toHaveLength(1);
  * }); // Automatically rolls back when test ends
  * ```

@@ -40,7 +40,7 @@ export interface TransactionCapableClient<TTransaction = unknown> {
 }
 
 /**
- * Type for the vitestDrizzle global variable
+ * Type for the vDrizzle global variable
  */
 export interface VitestDrizzleContext<TTransaction = unknown> {
   /**
@@ -48,14 +48,6 @@ export interface VitestDrizzleContext<TTransaction = unknown> {
    * This transaction is automatically rolled back when the test ends
    */
   client: TTransaction;
-}
-
-/**
- * Global variable type definitions
- */
-declare global {
-  // eslint-disable-next-line no-var
-  var vitestDrizzle: VitestDrizzleContext<unknown>;
 }
 
 /**

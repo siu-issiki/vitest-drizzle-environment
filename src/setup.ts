@@ -29,8 +29,8 @@ import type {
  * ```ts
  * // Test file
  * test("creates a user", async () => {
- *   await vitestDrizzle.client.insert(users).values({ name: "test" });
- *   const result = await vitestDrizzle.client.select().from(users);
+ *   await vDrizzle.client.insert(users).values({ name: "test" });
+ *   const result = await vDrizzle.client.select().from(users);
  *   expect(result).toHaveLength(1);
  * }); // Automatically rolls back when test ends
  * ```
@@ -43,12 +43,12 @@ export function setupDrizzleEnvironment<
     options
   );
 
-  const vitestDrizzleProxy: VitestDrizzleContext<TTransaction> = {
+  const vDrizzleProxy: VitestDrizzleContext<TTransaction> = {
     get client() {
       const tx = context.getCurrentTransaction();
       if (!tx) {
         console.warn(
-          'vitestDrizzle.client should be used in test or beforeEach functions because transaction has not yet started.'
+          'vDrizzle.client should be used in test or beforeEach functions because transaction has not yet started.'
         );
       }
       return tx as TTransaction;
@@ -57,9 +57,9 @@ export function setupDrizzleEnvironment<
 
   (
     globalThis as unknown as {
-      vitestDrizzle: VitestDrizzleContext<TTransaction>;
+      vDrizzle: VitestDrizzleContext<TTransaction>;
     }
-  ).vitestDrizzle = vitestDrizzleProxy;
+  ).vDrizzle = vDrizzleProxy;
 
   // Initialize DB client at the start of the test suite
   beforeEach(async () => {

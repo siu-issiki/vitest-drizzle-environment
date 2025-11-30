@@ -2,15 +2,15 @@
  * Tests for @siu-issiki/vitest-drizzle-pg
  *
  * setupDrizzleEnvironment is already set up in setup.ts.
- * By mocking client.ts to return vitestDrizzle.client,
+ * By mocking client.ts to return vDrizzle.client,
  * each test automatically runs within a transaction and rolls back when finished.
  */
 
 import { describe, test, expect, vi } from 'vitest';
 
-// Mock client.ts to return vitestDrizzle.client
-vi.mock('./client', () => ({
-  getClient: () => vitestDrizzle.client,
+// Mock client.ts to return vDrizzle.client
+vi.mock('../client', () => ({
+  getClient: () => vDrizzle.client,
 }));
 
 import {
@@ -23,7 +23,7 @@ import {
   getPostsByUserId,
   getAllPosts,
   createUserWithPosts,
-} from './index';
+} from '../index';
 
 // ============================================================
 // Tests to verify isolation between tests
@@ -169,3 +169,4 @@ describe('Isolation between multiple describe blocks', () => {
     expect(posts).toHaveLength(0);
   });
 });
+

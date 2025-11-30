@@ -1,5 +1,5 @@
 {
-  "name": "vitest-drizzle-pg-test",
+  "name": "vitest-drizzle-pg-test-factory",
   "private": true,
   "type": "module",
   "scripts": {
@@ -9,10 +9,11 @@
   "devDependencies": {
     "@types/node": "^20.11.0",
     "@types/pg": "^8.11.0",
-    "drizzle-orm": "^0.29.0",
+    "drizzle-orm": "^0.44.0",
     "pg": "^8.11.0",
     "vitest": "^2.0.0",
-    "@siu-issiki/vitest-drizzle-pg": "file:.."
+    "@siu-issiki/vitest-drizzle-pg": "file:../..",
+    "@praha/drizzle-factory": "^1.4.2"
   }
 }
 

@@ -1,0 +1,18 @@
+{
+  "name": "vitest-drizzle-pg-test-basic",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/pg": "^8.11.0",
+    "drizzle-orm": "^0.44.0",
+    "pg": "^8.11.0",
+    "vitest": "^2.0.0",
+    "@siu-issiki/vitest-drizzle-pg": "file:../.."
+  }
+}
+

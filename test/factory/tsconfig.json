@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "esModuleInterop": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "lib": ["ES2022"],
+    "types": ["node", "vitest/globals"]
+  },
+  "include": [
+    "./**/*",
+    "../schema.ts",
+    "../db.ts",
+    "../client.ts",
+    "../index.ts",
+    "../../src/**/*"
+  ],
+  "exclude": ["node_modules"]
+}
+
