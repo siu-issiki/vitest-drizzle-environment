@@ -1,6 +1,6 @@
 {
   "name": "@siu-issiki/vitest-drizzle-pg",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vitest environment for Drizzle ORM with PostgreSQL - automatic transaction rollback per test case",
   "type": "module",
   "publishConfig": {
